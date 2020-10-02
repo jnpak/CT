@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <iostream>
+#include <cstring>
 
 using namespace std;
 
@@ -10,10 +11,10 @@ int map[MAX][MAX];
 int visited[MAX][MAX];
 int mx[4] = { 0,-1,0,1 };
 int my[4] = { -1,0,1,0 };
-int GDist=0,Dist, N,top;
+int GDist = 0, Dist, N, top;
 
 
-void DFS(int x,int y) {
+void DFS(int x, int y) {
 	Dist++;
 	visited[x][y] = 1;
 
@@ -28,7 +29,7 @@ void DFS(int x,int y) {
 }
 
 
-int main() {
+int main(int argc, char **argv) {
 	int T, K;
 	vector<int> distv;
 	vector<pair<int, int>> v;
@@ -36,7 +37,7 @@ int main() {
 	cin >> T;
 	cin >> N >> K;
 
-	for (int k = 0; k < T; k++) { 
+	for (int k = 0; k < T; k++) {
 		top = 0;
 		for (int i = 1; i <= N; i++) {
 			for (int j = 1; j <= N; j++) {
@@ -59,11 +60,12 @@ int main() {
 			for (int j = 1; j <= N; j++) {
 				for (int t = 1; t <= K; t++) {
 					map[i][j] = map[i][j] - t;
-					for (int q = 0; q < v.size();q++) {
+					for (int q = 0; q < v.size(); q++) {
 
 						DFS(v[q].first, v[q].second);
 						if (GDist < Dist)GDist = Dist;
 						Dist = 0;
+						memset(visited, 0, sizeof(visited));
 
 					}
 					map[i][j] = map[i][i] + t;
@@ -75,7 +77,7 @@ int main() {
 	}
 
 	for (int i = 1; i <= distv.size(); i++) {
-		cout << "#" << i << " " << distv[i-1] << "\n";
+		cout << "#" << i << " " << distv[i - 1] << "\n";
 	}
 	return 0;
 }
