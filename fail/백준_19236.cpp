@@ -47,6 +47,8 @@ void move() {
 void DFS(int x, int y) {
 	num += map[x][y].num;
 	int D = map[x][y].Direction;
+	map[x][y].num = 0;
+	map[x][y].Direction = 0;
 	max_num = max(max_num, num);
 	move();
 
@@ -67,6 +69,7 @@ int main() {
 			cin >> map[i][j].num >> map[i][j].Direction;
 		}
 	}
+	DFS(0, 0);
 
 	cout << max_num;
 	return 0;
