@@ -5,14 +5,13 @@
 #include <algorithm>
 
 using namespace std;
-#define MAX 8
 
 int mx[4] = { -1,1,0,0 };
 int my[4] = { 0,0,-1,1 };
 int N, M;
 int max_cnt;
-int map[MAX][MAX];
-int map_copy[MAX][MAX];
+int map[9][9];
+int map_copy[9][9];
 
 vector<pair<int, int>> virus;
 
