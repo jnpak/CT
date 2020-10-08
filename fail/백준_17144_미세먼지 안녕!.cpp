@@ -12,6 +12,7 @@ struct Dust {
 	int amount;
 };
 
+int R, C, T;
 int map[50][50];
 vector<pair<int, int>> vecuum;
 queue<Dust> dust;
@@ -70,7 +71,7 @@ void Activate_cleaner() {
 }
 
 int main() {
-	int R, C, T;
+
 	cin >> R >> C >> T;
 
 	//입력
